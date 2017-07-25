@@ -32,6 +32,17 @@ func main() {
 	sliceTest()
 	valuesPointersTests()
 
+	val, err := deferWithNamedReturns(11)
+
+	fmt.Printf("Returned value = %v\n", val)
+	if(err != nil) {
+		fmt.Printf("Returned error = %v\n", err)
+	}
+
+	deferStackDemo()
+
+	methodsTests()
+
 }
 
 // comment
@@ -165,11 +176,51 @@ func valuesPointersTests(){
 
 	fmt.Println("Begin values & pointers tests")
 
+	pointerTest1()
+	pointerTest2()
+
 	passByValueTest1()
 	passByReferenceTest1()
 	passByValueTest2()
 	passByReferenceTest2()
 
 	fmt.Println("End values & pointers tests")
+
+}
+
+func deferWithNamedReturns(x int) (id int, err error) {
+	defer func() {
+		if id == 10 {
+			err = fmt.Errorf("Invalid Id\n")
+		}else{
+			fmt.Printf("Provided number %v is good\n", x)
+		}
+	}()
+
+	id = x
+
+	return
+}
+
+// defer calls are pushed on a stack, so calls are executed in last-in-first-out order
+func deferStackDemo(){
+
+	fmt.Println("counting")
+
+	for i := 0; i < 10; i++ {
+		defer fmt.Println(i)
+	}
+
+	fmt.Println("done")
+
+}
+
+func methodsTests(){
+
+	v1 := getSampleVertexValue()
+	v2 := getSampleVertexPointer()
+
+	fmt.Printf("Vertex = %+v\n", v1)
+	fmt.Printf("Vertex = %+v\n", v2)
 
 }

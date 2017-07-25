@@ -21,9 +21,35 @@ func PrintPerson(p &Person)	illegal
 
 */
 
-type Person struct {
-	Name string
-	Age int
+func pointerTest1(){
+
+	a := 5
+	b := a
+	c := &a
+
+	fmt.Printf("Values:\n a = %v\n b = %v\n c = %v\n *c = %v\n", a, b, c, *c)
+
+	a = 7
+
+	fmt.Printf("Values:\n a = %v\n b = %v\n c = %v\n *c = %v\n", a, b, c, *c)
+	fmt.Printf("Types:\n a:  %T\n b:  %T\n c: %T\n*c:  %T\n", a, b, c, *c)
+
+}
+
+func pointerTest2(){
+
+	p := Vertex{1, 2}  // has type Vertex
+	q := &Vertex{1, 2} // has type *Vertex
+	r := Vertex{X: 1}  // Y:0 is implicit
+	s := Vertex{}      // X:0 and Y:0
+	t := q
+	v := *q
+	q.X = 4
+	u := *q
+
+
+	fmt.Printf("p = %v, q = %v, r = %v, s = %v, t = %v, u = %v, (*t == u) = %v, v = %v, (v == u) = %v\n", p, q, r, s, t, u, *t == u, v, v == u)
+
 }
 
 // *****************************************************************************
