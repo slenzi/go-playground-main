@@ -23,13 +23,20 @@ func PrintPerson(p &Person)	illegal
 
 func pointerTest1(){
 
-	a := 5
-	b := a
-	c := &a
+	a := 5		// standard variable of type int
+	b := a		// another variable of type int
+	c := &a		// a variable of type 'pointer to int'
 
 	fmt.Printf("Values:\n a = %v\n b = %v\n c = %v\n *c = %v\n", a, b, c, *c)
+	fmt.Printf("Types:\n a:  %T\n b:  %T\n c: %T\n*c:  %T\n", a, b, c, *c)
 
-	a = 7
+	a = 7		// value of b will not change, but value of c will change because c points to the memory space of a
+
+	fmt.Printf("Values:\n a = %v\n b = %v\n c = %v\n *c = %v\n", a, b, c, *c)
+	fmt.Printf("Types:\n a:  %T\n b:  %T\n c: %T\n*c:  %T\n", a, b, c, *c)
+
+	// dereference c and indirectly change a
+	*c = 4		// will change the value of a because c points to the memory space of a
 
 	fmt.Printf("Values:\n a = %v\n b = %v\n c = %v\n *c = %v\n", a, b, c, *c)
 	fmt.Printf("Types:\n a:  %T\n b:  %T\n c: %T\n*c:  %T\n", a, b, c, *c)
