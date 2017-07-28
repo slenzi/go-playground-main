@@ -178,6 +178,7 @@ func valuesPointersTests(){
 
 	pointerTest1()
 	pointerTest2()
+	pointerTest3()
 
 	passByValueTest1()
 	passByReferenceTest1()

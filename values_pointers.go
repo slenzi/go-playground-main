@@ -59,6 +59,33 @@ func pointerTest2(){
 
 }
 
+func pointerTest3(){
+
+	a := 2
+	b := newInt1()
+	c := newInt2()
+
+	fmt.Printf("Values: a = %v, b = %v, c = %v\n", a ,b, c)
+	fmt.Printf("Types: a = %T, b = %T, c = %T, *b = %T, *c = %T\n", a, b, c, *b, *c)
+
+	*b = 3
+	c = &a
+
+	fmt.Printf("Values: a = %v, b = %v, c = %v\n", a ,*b, *c)
+	fmt.Printf("Types: a = %T, b = %T, c = %T\n", a, *b, *c)
+
+
+}
+// example use of new
+func newInt1() *int {
+	return new(int)
+}
+func newInt2() *int {
+	var i int
+	return &i
+}
+
+
 // *****************************************************************************
 // Pass by Value 2
 // *****************************************************************************
